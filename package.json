@@ -1,0 +1,28 @@
+{
+  "name": "bienvenue-musician-app-server",
+  "version": "1.0.0",
+  "description": "BienVenue is an app that aims to solve a common problem that touring and gigging musicians have when booking their own shows: finding the best venues to perform at and accurate contact information for bookers at these venues. The app will build a database of music venues across the world, which users can constantly refer to when in search of reputable venues. BienVenue is meant to be a central hub for DIY musicians booking their own gigs.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srbrry/bienvenue-musician-app-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srbrry/bienvenue-musician-app-server/issues"
+  },
+  "homepage": "https://github.com/srbrry/bienvenue-musician-app-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.0"
+  }
+}
