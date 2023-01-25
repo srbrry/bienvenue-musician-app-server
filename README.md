@@ -8,13 +8,17 @@ Javascript, Express, Mongodb, Mongoose, Cors, Passport, Passport_JWT, Jsonwebtok
 
 ## ERD
 
-![Entity Relationship Diagram](./images/BienVenue%20ERD.jpg)
+![Entity Relationship Diagram](./images/BienVenue%20App%20ERD.jpg)
 
 ## Routes Table
 
 |  NAME  |    PATH      | HTTP VERB |         PURPOSE           |
 | ------ | ------------ | --------- | ------------------------  |
 | Index  |   /venues    |    GET    |    Shows all venues       |
-| Show   |  /venues/:id |    GET    |  Shows newly added venues |
+| Show   |  /venues/:id |    GET    |  Shows venue details |
 | Create |  /venues     |    POST   |  Creates a new venue      |
 | Delete |  /venues/:id |   DELETE  |    Deletes the venue      |
+|  Index  |  /shows       |    GET        |  Shows all shows               |
+|  Show   |  /shows/:id   |     GET       |  Shows show details                |
+|  Create  |  /shows     |    POST        |  Creates a new show           |
+|  Delete | /shows:id   |     DELETE     |  Deletes the show                         |
