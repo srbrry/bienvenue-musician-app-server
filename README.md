@@ -8,7 +8,7 @@ Javascript, Express, Mongodb, Mongoose, Cors, Passport, Passport_JWT, Jsonwebtok
 
 ## ERD
 
-![Entity Relationship Diagram](./images/ERD%20diagram.png)
+![Entity Relationship Diagram](./images/BienVenue%20ERD.jpg)
 
 ## Routes Table
 
