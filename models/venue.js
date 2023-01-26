@@ -68,5 +68,5 @@ const venueSchema = new Schema(
 
 const Venue = mongoose.model('Venue', venueSchema)
 
-// Exporting Campaign model to use elsewhere
+// Exporting Venue model to use elsewhere
 module.exports = Venue

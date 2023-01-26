@@ -53,7 +53,6 @@ router.patch('/venues/:id', (req, res, next) => {
 		.catch(next)
 })
 
-// DESTROY
 // DELETE /venues/5a7db6c74d55bc51bdf39793
 router.delete('/venues/:id', (req, res, next) => {
 	Venue.findById(req.params.id)

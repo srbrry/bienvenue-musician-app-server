@@ -11,7 +11,7 @@ const requestLogger = require('./lib/request-logger')
 const showRoutes = require('./routes/show-routes')
 const userRoutes = require('./routes/user-routes')
 // 'Magic numbers' should always be declared at the top of the file and named in all caps
-const PORT = 8000
+const PORT = 8002
 
 // To avoid the deprecation warning set `strictQuery` to true
 mongoose.set('strictQuery', true)

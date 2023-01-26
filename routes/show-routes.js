@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Venue = require('../models/venue')
+const Show = require('../models/show')
 const { handle404 } = require('../lib/custom-errors')
 
 const { requireToken } = require('../config/auth')
@@ -9,7 +9,7 @@ const { requireToken } = require('../config/auth')
 // CREATE
 // POST / shows
 router.post('/shows', requireToken, (req, res, next) => {
-    const venueId = req.body.show.venueId
+    const showId = req.body.show.showId
 
     const show = req.body.show
     // adding an owner field
@@ -32,33 +32,37 @@ router.post('/shows', requireToken, (req, res, next) => {
       .catch(next)
 })
 
+// CREATE
+// GET
+
+router.get('/shows', requireToken, (req, res, next) => {
+	Show.find()
+		.then((shows) => {
+			return shows.map((show) => show)
+		})
+		.then((shows) => res.status(200).json({ shows: shows }))
+		.catch(next)
+})
+
 // UPDATE
 // PATCH /shows/:id
-router.patch('/shows/:showId', (req, res, next) => {
-    const venueId = req.body.show.venueId
-
-    const show = req.body.show
-
-    Venue.findById(venueId)
-        .then(handle404)
-        .then(venue => {
-            const show = venue.shows.id(req.params.showId)
-
-            show.set(showBody)
-
-
-            return venue.save()
-        })
-        .then(() => res.sendStatus(204))
+router.patch('/shows/:id', (req, res, next) => {
+	Show.findById(req.params.id)
+		.then(handle404)
+		.then((show) => {
+			return show.updateOne(req.body.show)
+		})
+		.then(() => res.sendStatus(204))
+		.catch(next)
 })
 
 // DELETE
 router.delete('/shows/:showId', (req, res, next) => {
-    const venueId = req.body.show.venueId
+    const showId = req.body.show.venueId
 
-    Venue.findById(venueId)
+    Show.findById(venueId)
         .then(handle404)
-        .then(venue => {
+        .then(show => {
             venue.shows.id(req.params.showId).remove()
 
             // since I've modified I have to save
