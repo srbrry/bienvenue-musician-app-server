@@ -3,7 +3,7 @@ const passport = require('passport')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const secret = process.env.JWT_SECRET || 'is your server running? well then you better go catch it'
+const secret = process.env.JWT_SECRET || 'a super secret string only i can see'
 
 const { Strategy, ExtractJwt } = require('passport-jwt')
 
@@ -32,12 +32,6 @@ const requireToken = passport.authenticate('jwt', { session: false })
 // Create a function that takes the request and a user document
 // and uses them to create a token to send back to the user
 const createUserToken = (req, user) => {
-	// Make sure that we have a user, if it's null that means we didn't
-	// find the email in the database.  If there is a user, make sure
-	// that the password is correct.  For security reason, we don't want
-	// to tell the client whether the email was not found or that the
-	// password was incorrect.  Instead we send the same message for both
-	// making it much harder for hackers.
 	if (
 		!user ||
 		!req.body.credentials.password ||

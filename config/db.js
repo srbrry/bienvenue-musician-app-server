@@ -1,4 +1,4 @@
-const mongooseBaseName = 'express-auth'
+const mongooseBaseName = 'bienvenue-app'
 
 const database = {
 	development: `mongodb://localhost/${mongooseBaseName}-development`,

@@ -1,6 +1,5 @@
 // require mongoose
 const mongoose = require('mongoose')
-
 const showSchema = require('./show')
 
 // Getting the Schema from Mongoose

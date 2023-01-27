@@ -1,8 +1,6 @@
 const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
-
-const showSchema = new Schema({
+const showSchema = new mongoose.Schema({
     artist: {
         type: String,
         required: true,
@@ -10,6 +8,10 @@ const showSchema = new Schema({
     year: {
         type: Number,
         required: true,
+    },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
     }
     }, 
     {
