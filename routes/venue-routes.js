@@ -27,7 +27,9 @@ router.get('/venues/:id', (req, res, next) => {
 	// req.params.id will be set based on the `:id` in the route
 	Venue.findById(req.params.id)
 		.then(handle404)
-		.then((venue) => res.status(200).json({ venue: venue }))
+		.then((venue) => {
+			res.status(200).json({ venue: venue })
+		})
 		.catch(next)
 })
 
@@ -42,7 +44,7 @@ router.post('/venues', (req, res, next) => {
 })
 
 // UPDATE
-// PATCH /venues/ID
+// PATCH /venues/5a7db6c74d55bc51bdf39793
 router.patch('/venues/:id', (req, res, next) => {
 	Venue.findById(req.params.id)
 		.then(handle404)

@@ -1,6 +1,7 @@
 // require express
 const express = require('express')
 // require mongoose
+// const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 // require cors
 const cors = require('cors')
@@ -30,6 +31,7 @@ app.use(cors({ origin: `http://127.0.0.1:5500` }))
 
 // For Express to accept the content type of json we have to use `express.json()` middleware and pass it to `app.use`
 app.use(express.json())
+// app.use(bodyParser.json());
 app.use(requestLogger)
 
 // Pass the routes to `app.use` for Express to use them

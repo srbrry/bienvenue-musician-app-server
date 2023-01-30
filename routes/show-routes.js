@@ -3,18 +3,17 @@ const router = express.Router()
 
 const Venue = require('../models/venue')
 const { handle404 } = require('../lib/custom-errors')
-// const { requireToken } = require('../config/auth')
+const { requireToken } = require('../config/auth')
 
 // CREATE
 // POST / shows
-// put requireToken back in once sign up is complete
-router.post('/shows', (req, res, next) => {
+router.post('/shows', requireToken, (req, res, next) => {
     const venueId = req.body.show.venueId
 
     const show = req.body.show
     // adding an owner field
     // links show to user below
-    // show.owner = req.user._id
+    show.owner = req.user._id
 
     Venue.findById(venueId)
       .then(handle404)
@@ -28,11 +27,28 @@ router.post('/shows', (req, res, next) => {
     .catch(next)
 })
 
+// SHOW
+// GET venues/:venueId/shows
+
+// search for shows where the venue id = res.params.venueId
+// return the same thing you returned for venues but shows (line 17-19 in venue)
+
+router.get('/shows/:showId', requireToken, (req, res, next) => {
+	Shows.findById(res.params.venueId)
+	.then((shows) => {
+		return shows.map((show) => show)
+	})
+	.then((shows) => res.status(200).json({ shows: shows }))
+	.catch(next)
+})	
+
+
 // UPDATE
-// PATCH /shows/:id
-// put require token BACK in after
-router.patch('/shows/:showId', (req, res, next) => {
+// PATCH /shows/:showId
+router.patch('/shows/:showId', requireToken, (req, res, next) => {
 	const venueId = req.body.show.venueId
+
+	console.log(venueId)
 
 	Venue.findById(venueId)
 		.then(handle404)
@@ -48,7 +64,7 @@ router.patch('/shows/:showId', (req, res, next) => {
 // DESTROY
 // DELETE /notes/:id
 // put require token back IN
-router.delete('/shows/:showId', (req, res, next) => {
+router.delete('/shows/:showId', requireToken, (req, res, next) => {
 	const venueId = req.body.show.venueId
 
 	Venue.findById(venueId)

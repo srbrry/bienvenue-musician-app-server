@@ -28,20 +28,20 @@ const venueSchema = new Schema(
         },
         capacity: {
             type: Number,
-            required: true,
+            required: false,
         },
         typeOfShowsBooked: {
             type: String,
-            required: true,
+            required: false,
         },
         contact: {
             name: {
                 type: String,
-                required: true,
+                required: false,
             },
             email: {
                 type: String,
-                required: true,
+                required: false,
             },
             socialMediaLinks: {
                 instagram: {
