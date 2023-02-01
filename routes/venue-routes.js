@@ -13,7 +13,7 @@ const router = express.Router()
 // INDEX
 // GET /venues
 router.get('/venues', requireToken, (req, res, next) => {
-	Venue.find()
+	Venue.find().populate('shows')
 		.then((venues) => {
 			return venues.map((venue) => venue)
 		})
@@ -25,7 +25,7 @@ router.get('/venues', requireToken, (req, res, next) => {
 // GET /venues/ID
 router.get('/venues/:id', (req, res, next) => {
 	// req.params.id will be set based on the `:id` in the route
-	Venue.findById(req.params.id)
+	Venue.findById(req.params.id).populate('shows')
 		.then(handle404)
 		.then((venue) => {
 			res.status(200).json({ venue: venue })
