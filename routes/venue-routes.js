@@ -23,7 +23,7 @@ router.get('/venues', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /venues/ID
-router.get('/venues/:id', (req, res, next) => {
+router.get('/venues/:id', requireToken, (req, res, next) => {
 	// req.params.id will be set based on the `:id` in the route
 	Venue.findById(req.params.id).populate('shows')
 		.then(handle404)
@@ -35,7 +35,7 @@ router.get('/venues/:id', (req, res, next) => {
 
 // CREATE
 // POST /venues
-router.post('/venues', (req, res, next) => {
+router.post('/venues', requireToken, (req, res, next) => {
 	Venue.create(req.body.venue)
 		.then((venue) => {
 			res.status(201).json({ venue: venue })
@@ -45,7 +45,7 @@ router.post('/venues', (req, res, next) => {
 
 // UPDATE
 // PATCH /venues/5a7db6c74d55bc51bdf39793
-router.patch('/venues/:id', (req, res, next) => {
+router.patch('/venues/:id', requireToken, (req, res, next) => {
 	Venue.findById(req.params.id)
 		.then(handle404)
 		.then((venue) => {
@@ -56,7 +56,7 @@ router.patch('/venues/:id', (req, res, next) => {
 })
 
 // DELETE /venues/5a7db6c74d55bc51bdf39793
-router.delete('/venues/:id', (req, res, next) => {
+router.delete('/venues/:id', requireToken, (req, res, next) => {
 	Venue.findById(req.params.id)
 		.then(handle404)
 		.then((venue) => {
