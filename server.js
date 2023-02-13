@@ -1,3 +1,5 @@
+//lots of descriptive and clear comments throughout your app! great!
+
 // require express
 const express = require('express')
 // require mongoose
